@@ -470,15 +470,15 @@ export function EditForm(props: EditFormProps) {
   return (
     // We need to use className instead of class for TSX
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative lg:pt-5 text-left">
-      <form className="space-y-8 divide-y divide-gray-200"
+      <form className="space-y-8 divide-y divide-gray-200 dark:divide-gray-700"
         onSubmit={handleSubmit} // We move the function outside, to make the code more readable
       >
         {loader}
-        <div className="space-y-8 divide-y divide-gray-200">
+        <div className="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
           <div>
             <div>
-              <h3 className="text-3xl font-medium leading-6 text-gray-900">{props.title}</h3>
-              <p className="my-2 text-sm text-gray-500">{props.description}</p>
+              <h3 className="text-3xl font-medium leading-6 text-gray-900 dark:text-gray-100">{props.title}</h3>
+              <p className="my-2 text-sm text-gray-500 dark:text-gray-400">{props.description}</p>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               {
@@ -490,10 +490,10 @@ export function EditForm(props: EditFormProps) {
                   if (!editEntry.type || editEntry.type == EditEntryType.Text) {
                     return (
                       <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName + requiredMark}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
                         </label>
                         <div className="my-2">
@@ -503,7 +503,7 @@ export function EditForm(props: EditFormProps) {
                             type="text"
                             autoComplete={editEntry.attribute}
                             defaultValue={entity && entity[editEntry.attribute] ? String(entity[editEntry.attribute]) : ""}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                             // We add an onChange handler to update the entity state and to avoid it to be uncontrolled
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                               const entityCp = { ...entity };
@@ -513,17 +513,17 @@ export function EditForm(props: EditFormProps) {
                           />
                         </div>
                         {editEntry.info && (
-                          <p className="text-sm text-gray-500">{editEntry.info}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">{editEntry.info}</p>
                         )}
                       </div>
                     )
                   } else if (editEntry.type == EditEntryType.Select) {
 
                     <div className="col-span-6 sm:col-span-3">
-                      <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                      <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         {editEntry.attributeName + requiredMark}
                         {editEntry.subName && (
-                          <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                          <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                         )}
                       </label>
                       <div className="my-2">
@@ -532,7 +532,7 @@ export function EditForm(props: EditFormProps) {
                           name={editEntry.attribute}
                           autoComplete={editEntry.attribute}
                           defaultValue={entity && entity[editEntry.attribute] ? String(entity[editEntry.attribute]) : ""}
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         />
                         <option>United States</option>
                         <option>Canada</option>
@@ -542,10 +542,10 @@ export function EditForm(props: EditFormProps) {
                   } else if (editEntry.type == EditEntryType.Date) {
                     return (
                       <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName + requiredMark}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
                         </label>
                         <div className="my-2">
@@ -555,7 +555,7 @@ export function EditForm(props: EditFormProps) {
                             type="text"
                             autoComplete={editEntry.attribute}
                             defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute] : ""}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div>
                       </div>
@@ -565,11 +565,11 @@ export function EditForm(props: EditFormProps) {
                       <div className="col-span-6">
                         <div className="relative py-5">
                           <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div className="w-full border-t border-gray-300" />
+                            <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                           </div>
                         </div>
                         <div className="col-span-6 pb-2">
-                          <h3 className="text-lg font-medium leading-6 text-gray-900">{editEntry.attributeName + requiredMark}</h3>
+                          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{editEntry.attributeName + requiredMark}</h3>
                         </div>
                         {
                           Array.from(Array(listFieldSize[index]).keys()).map((i) => {
@@ -580,7 +580,7 @@ export function EditForm(props: EditFormProps) {
                                   name={editEntry.attribute + "_listfieldsingleidx_" + i}
                                   type="text"
                                   defaultValue={entity && entity[editEntry.attribute] && entity[editEntry.attribute][i] ? entity[editEntry.attribute][i] : ""}
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                 />
                               </div>
                             );
@@ -589,7 +589,7 @@ export function EditForm(props: EditFormProps) {
                         <div className="flex">
                           <button
                             type="button"
-                            className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
                               const newListFieldSize = [...listFieldSize];
                               newListFieldSize[index] = Math.min(10, newListFieldSize[index] + 1);
@@ -600,7 +600,7 @@ export function EditForm(props: EditFormProps) {
                           </button>
                           <button
                             type="button"
-                            className="ml-3 rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="ml-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
                               const newListFieldSize = [...listFieldSize];
                               newListFieldSize[index] = Math.max(1, newListFieldSize[index] - 1);
@@ -617,19 +617,19 @@ export function EditForm(props: EditFormProps) {
                       <div className="col-span-6">
                         <div className="relative py-5">
                           <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div className="w-full border-t border-gray-300" />
+                            <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                           </div>
                         </div>
                         <div className="col-span-6 pb-2">
-                          <h3 className="text-lg font-medium leading-6 text-gray-900">{editEntry.attributeName + requiredMark}</h3>
+                          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{editEntry.attributeName + requiredMark}</h3>
                           {editEntry.subName && (
-                            <p className="text-sm text-gray-500">{editEntry.subName}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">{editEntry.subName}</p>
                           )}
                         </div>
                         {
                           Array.from(Array(listFieldSize[index]).keys()).map((i) => {
                             return (<>
-                              <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                              <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 {"Question " + (i + 1).toString()}
                               </label>
                               <div className="my-2">
@@ -638,10 +638,10 @@ export function EditForm(props: EditFormProps) {
                                   name={editEntry.attribute + "_listfieldidx_" + i + "_0"}
                                   type="text"
                                   defaultValue={entity && entity[editEntry.attribute] && entity[editEntry.attribute][i] ? entity[editEntry.attribute][i][0] : ""}
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                 />
                               </div>
-                              <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                              <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 {"Answer " + (i + 1).toString()}
                               </label>
                               <div className="my-2">
@@ -650,7 +650,7 @@ export function EditForm(props: EditFormProps) {
                                   name={editEntry.attribute + "_listfieldidx_" + i + "_1"}
                                   type="text"
                                   defaultValue={entity && entity[editEntry.attribute] && entity[editEntry.attribute][i] ? entity[editEntry.attribute][i][1] : ""}
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                 />
                               </div>
                             </>);
@@ -659,7 +659,7 @@ export function EditForm(props: EditFormProps) {
                         <div className="flex">
                           <button
                             type="button"
-                            className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
                               const newListFieldSize = [...listFieldSize];
                               newListFieldSize[index] = Math.min(10, newListFieldSize[index] + 1);
@@ -670,7 +670,7 @@ export function EditForm(props: EditFormProps) {
                           </button>
                           <button
                             type="button"
-                            className="ml-3 rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="ml-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
                               const newListFieldSize = [...listFieldSize];
                               newListFieldSize[index] = Math.max(1, newListFieldSize[index] - 1);
@@ -690,17 +690,17 @@ export function EditForm(props: EditFormProps) {
                             type="checkbox"
                             id={editEntry.attribute}
                             name={editEntry.attribute}
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                             onChange={(e) => {
                               setCheckboxFieldValue(e.target.checked);
                             }}
                           />
                         </div>
                         <div className="ml-2 text-sm">
-                          <label htmlFor={editEntry.attribute} className="font-medium text-gray-700">
+                          <label htmlFor={editEntry.attribute} className="font-medium text-gray-700 dark:text-gray-300">
                             {editEntry.attributeName}
                           </label>
-                          <p className="text-gray-500">
+                          <p className="text-gray-500 dark:text-gray-400">
                             {editEntry.subName}
                           </p>
                         </div>
@@ -709,10 +709,10 @@ export function EditForm(props: EditFormProps) {
                   } else if (editEntry.type == EditEntryType.Radio) {
                     return (
                       <div className="col-span-6">
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName + requiredMark}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
                         </label>
                         <fieldset className="mt-4">
@@ -723,7 +723,7 @@ export function EditForm(props: EditFormProps) {
                                   name={editEntry.attribute}
                                   type="radio"
                                   checked={String(radioFieldValue[index]) === option}
-                                  className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  className="h-4 w-4 border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500"
                                   value={option}
                                   onChange={(e) => {
                                     const currRadioFieldValue = [...radioFieldValue]
@@ -731,7 +731,7 @@ export function EditForm(props: EditFormProps) {
                                     setRadioFieldValue(currRadioFieldValue);
                                   }}
                                 />
-                                <label className="ml-3 block text-sm font-medium text-gray-700">
+                                <label className="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
                                   {option}
                                 </label>
                               </div>
@@ -744,10 +744,10 @@ export function EditForm(props: EditFormProps) {
                   } else if (editEntry.type == EditEntryType.TextArea) {
                     return (
                       <div className="col-span-6">
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName + requiredMark}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
 
                         </label>
@@ -756,7 +756,7 @@ export function EditForm(props: EditFormProps) {
                             id={editEntry.attribute}
                             name={editEntry.attribute}
                             rows={3}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                             defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute] : ""}
                             onChange={(event) => {
                               const characterCount = event.target.value.length;
@@ -767,7 +767,7 @@ export function EditForm(props: EditFormProps) {
                             <p className={classNames(
                               "mt-3 text-sm",
                               characterCounts[editEntry.attribute] && (characterCounts[editEntry.attribute] > editEntry.characterCount) ?
-                                "text-red-500" : "text-gray-500"
+                                "text-red-500" : "text-gray-500 dark:text-gray-400"
                             )}>
                               Character Count: {characterCounts[editEntry.attribute] ? characterCounts[editEntry.attribute] : 0}/{editEntry.characterCount}
                             </p>
@@ -815,14 +815,14 @@ export function EditForm(props: EditFormProps) {
                   } else if (editEntry.type == EditEntryType.ProfilePhoto) {
                     return (
                       <div className="col-span-6 py-3">
-                        <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="photo" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName + requiredMark}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
                         </label>
                         <div className="my-2 flex items-center">
-                          <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-300">
+                          <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-600">
                             {
                               uploadPhotoMap[editEntry.attribute] ? (
                                 <img className="object-cover aspect-square" src={uploadPhotoMap[editEntry.attribute]} alt="" />
@@ -837,7 +837,7 @@ export function EditForm(props: EditFormProps) {
                           <button
                             type="button"
                             onClick={() => shadowFileInput.current[index].click()}
-                            className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="ml-5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-3 text-sm font-medium leading-4 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             Change
                           </button>
@@ -866,18 +866,18 @@ export function EditForm(props: EditFormProps) {
                   } else if (editEntry.type == EditEntryType.Photo) {
                     return (
                       <div className="col-span-6 py-3">
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName + requiredMark}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
                         </label>
                         {!uploadPhotoMap[editEntry.attribute] && (!entity || !entity[editEntry.attribute]) ? (
                           <>
-                            <div className="my-2 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                            <div className="my-2 flex justify-center rounded-md border-2 border-dashed border-gray-300 dark:border-gray-600 px-6 pt-5 pb-6">
                               <div className="space-y-1 text-center">
                                 <svg
-                                  className="mx-auto h-12 w-12 text-gray-400"
+                                  className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
                                   stroke="currentColor"
                                   fill="none"
                                   viewBox="0 0 48 48"
@@ -890,10 +890,10 @@ export function EditForm(props: EditFormProps) {
                                     strokeLinejoin="round"
                                   />
                                 </svg>
-                                <div className="flex text-sm text-gray-600">
+                                <div className="flex text-sm text-gray-600 dark:text-gray-400">
                                   <label
                                     htmlFor={editEntry.attribute}
-                                    className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
+                                    className="relative cursor-pointer rounded-md bg-white dark:bg-gray-800 font-medium text-indigo-600 dark:text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500 dark:hover:text-indigo-400"
                                   >
                                     <span>Select a file</span>
                                     <input id={editEntry.attribute}
@@ -921,7 +921,7 @@ export function EditForm(props: EditFormProps) {
                                   </label>
                                   <p className="pl-1"> to upload</p>
                                 </div>
-                                <p className="text-xs text-gray-500">{'.jpg, .png' + " up to 10MB"}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">{'.jpg, .png' + " up to 10MB"}</p>
                               </div>
                             </div>
                           </>
@@ -929,12 +929,17 @@ export function EditForm(props: EditFormProps) {
                           <>
                             <div className="my-2 flex rounded-md overflow-hidden max-w-xl">
 
-                              <span className="overflow-hidden bg-gray-300">
-                                {uploadPhotoMap[editEntry.attribute] ? (
-                                  <img className="object-cover aspect-video" src={uploadPhotoMap[editEntry.attribute]} alt="" />
-                                ) : (
-                                  <img className="object-cover aspect-video" src={entity[editEntry.attribute]} alt="" />
-                                )}
+                              <span className="overflow-hidden bg-gray-300 dark:bg-gray-600">
+                                {
+                                  uploadPhotoMap[editEntry.attribute] ? (
+                                    <img className="object-cover aspect-video" src={uploadPhotoMap[editEntry.attribute]} alt="" />
+                                  ) : (entity && entity[editEntry.attribute]) ?
+                                    (
+                                      <img className="object-cover aspect-video" src={entity[editEntry.attribute]} alt="" />
+                                    ) : (
+                                      <></>
+                                    )
+                                }
                               </span>
 
                             </div>
@@ -942,7 +947,7 @@ export function EditForm(props: EditFormProps) {
                               <button
                                 type="button"
                                 onClick={() => shadowFileInput.current[index].click()}
-                                className="rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-3 text-sm font-medium leading-4 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                               >
                                 Change
                               </button>
@@ -974,16 +979,16 @@ export function EditForm(props: EditFormProps) {
                       <div className="col-span-6">
                         <div className="relative py-5">
                           <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div className="w-full border-t border-gray-300" />
+                            <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                           </div>
                         </div>
                         <div className="col-span-6 pb-2">
-                          <h3 className="text-lg font-medium leading-6 text-gray-900">{editEntry.attributeName}</h3>
+                          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{editEntry.attributeName}</h3>
                           {editEntry.subName && (
-                            <p className="text-xs text-gray-500">{editEntry.subName}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</p>
                           )}
                         </div>
-                        {/* <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        {/* <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           Tagline
                         </label>
                         <div className="my-2">
@@ -992,10 +997,10 @@ export function EditForm(props: EditFormProps) {
                             name={editEntry.attribute + "_tagline"}
                             type="text"
                             defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["tagline"] : ""}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div> */}
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           Title
                         </label>
                         <div className="my-2">
@@ -1004,10 +1009,10 @@ export function EditForm(props: EditFormProps) {
                             name={editEntry.attribute + "_title"}
                             type="text"
                             defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["title"] : ""}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div>
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           Subtitle
                         </label>
                         <div className="my-2">
@@ -1016,10 +1021,10 @@ export function EditForm(props: EditFormProps) {
                             name={editEntry.attribute + "_subtitle"}
                             type="text"
                             defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["subtitle"] : ""}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div>
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           Content
                         </label>
                         <div className="my-2">
@@ -1027,7 +1032,7 @@ export function EditForm(props: EditFormProps) {
                             id={editEntry.attribute + "_content"}
                             name={editEntry.attribute + "_content"}
                             rows={10}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                             defaultValue={entity && entity[editEntry.attribute] && entity[editEntry.attribute]["content"] ? (typeof entity[editEntry.attribute]["content"] === "string" ? entity[editEntry.attribute]["content"] : entity[editEntry.attribute]["content"].join("\n")) : ""}
                           />
                         </div>
@@ -1035,7 +1040,7 @@ export function EditForm(props: EditFormProps) {
                           editEntry.button && (
                             <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                   Button Text
                                 </label>
                                 <div className="my-2">
@@ -1045,13 +1050,13 @@ export function EditForm(props: EditFormProps) {
                                     type="text"
                                     placeholder="Etsy Shop"
                                     defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["button_text"] : editEntry.button}
-                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                   />
                                 </div>
                               </div>
 
                               <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                   Button URL
                                 </label>
                                 <div className="my-2">
@@ -1061,7 +1066,7 @@ export function EditForm(props: EditFormProps) {
                                     type="text"
                                     placeholder="https://www.example.com"
                                     defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["button_link"] : ""}
-                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                   />
                                 </div>
                               </div>
@@ -1069,22 +1074,18 @@ export function EditForm(props: EditFormProps) {
                           )
 
                         }
-                        <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="photo" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           Attached Photo
                         </label>
                         <div className="my-2 flex items-center">
 
-                          <span className="h-20 aspect-video overflow-hidden bg-gray-300">
+                          <span className="h-20 aspect-video overflow-hidden bg-gray-300 dark:bg-gray-600">
                             {
                               uploadPhotoMap[editEntry.attribute + "_image_url"] ? (
-                                <img src={uploadPhotoMap[editEntry.attribute + "_image_url"]} alt=""
-                                  className="aspect-video object-contain"
-                                />
+                                <img src={uploadPhotoMap[editEntry.attribute + "_image_url"]} alt="" className="object-cover aspect-video" />
                               ) : (entity && entity[editEntry.attribute] && entity[editEntry.attribute]["image_url"]) ?
                                 (
-                                  <img src={entity[editEntry.attribute]["image_url"]} alt=""
-                                    className="aspect-video object-contain"
-                                  />
+                                  <img src={entity[editEntry.attribute]["image_url"]} alt="" className="object-cover aspect-video" />
                                 ) : (
                                   <></>
                                 )
@@ -1093,7 +1094,7 @@ export function EditForm(props: EditFormProps) {
                           <button
                             type="button"
                             onClick={() => shadowFileInput.current[index].click()}
-                            className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="ml-5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-3 text-sm font-medium leading-4 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             Change
                           </button>
@@ -1123,15 +1124,15 @@ export function EditForm(props: EditFormProps) {
                       <div className="col-span-6">
                         <div className="relative my-5">
                           <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div className="w-full border-t border-gray-300" />
+                            <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                           </div>
                         </div>
                         <div className="col-span-6 py-2">
-                          <h3 className="text-lg font-medium leading-6 text-gray-900">{editEntry.attributeName}</h3>
+                          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{editEntry.attributeName}</h3>
                         </div>
                         <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                           <div className="col-span-6">
-                            <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                               Street Address
                             </label>
                             <div className="my-2">
@@ -1141,12 +1142,12 @@ export function EditForm(props: EditFormProps) {
                                 id={editEntry.attribute + "_street_address"}
                                 defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["street_address"] : ""}
                                 autoComplete="street-address"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
                           </div>
                           <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                               City/Town
                             </label>
                             <div className="my-2">
@@ -1156,12 +1157,12 @@ export function EditForm(props: EditFormProps) {
                                 id={editEntry.attribute + "_city"}
                                 defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["city"] : ""}
                                 autoComplete="city"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
                           </div>
                           <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                               State
                             </label>
                             <div className="my-2">
@@ -1171,12 +1172,12 @@ export function EditForm(props: EditFormProps) {
                                 id={editEntry.attribute + "_province"}
                                 defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["province"] : ""}
                                 autoComplete="province"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
                           </div>
                           <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="country" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                               Country*
                             </label>
                             <div className="my-2">
@@ -1184,7 +1185,7 @@ export function EditForm(props: EditFormProps) {
                                 id={editEntry.attribute + "_country"}
                                 name={editEntry.attribute + "_country"}
                                 autoComplete="country-name"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                               >
                                 <option selected={entity && entity[editEntry.attribute] && entity[editEntry.attribute]["country"] === "United States"}>United States</option>
                                 <option selected={entity && entity[editEntry.attribute] && entity[editEntry.attribute]["country"] === "Canada"}>Canada</option>
@@ -1192,7 +1193,7 @@ export function EditForm(props: EditFormProps) {
                             </div>
                           </div>
                           <div className="col-span-6 sm:col-span-3">
-                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                               Postal Code
                             </label>
                             <div className="my-2">
@@ -1202,7 +1203,7 @@ export function EditForm(props: EditFormProps) {
                                 id={editEntry.attribute + "_postal_code"}
                                 defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["postal_code"] : ""}
                                 autoComplete="postal-code"
-                                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
                           </div>
@@ -1228,20 +1229,20 @@ export function EditForm(props: EditFormProps) {
                       <div className="col-span-6" key={editEntry.attribute}>
                         <div className="relative py-5">
                           <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div className="w-full border-t border-gray-300" />
+                            <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                           </div>
                         </div>
                         <div className="col-span-6 pb-2">
-                          <h3 className="text-lg font-medium leading-6 text-gray-900">{editEntry.attributeName}</h3>
+                          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{editEntry.attributeName}</h3>
                           {editEntry.subName && (
-                            <p className="text-xs text-gray-500">{editEntry.subName}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</p>
                           )}
                         </div>
 
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           Title
                           {editEntry.subTitle && (
-                            <span className="block text-xs text-gray-500">{editEntry.subTitle}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subTitle}</span>
                           )}
 
                         </label>
@@ -1251,7 +1252,7 @@ export function EditForm(props: EditFormProps) {
                             name={editEntry.attribute + "_title"}
                             type="text"
                             defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["title"] : ""}
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div>
 
@@ -1259,7 +1260,7 @@ export function EditForm(props: EditFormProps) {
                           <>
                             <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                               <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                   Handle
                                 </label>
                                 <div className="my-2">
@@ -1269,13 +1270,13 @@ export function EditForm(props: EditFormProps) {
                                     type="text"
                                     placeholder="@"
                                     defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["handle"] : ""}
-                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                   />
                                 </div>
                               </div>
 
                               <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                                <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                   Profile URL
                                 </label>
                                 <div className="my-2">
@@ -1285,24 +1286,24 @@ export function EditForm(props: EditFormProps) {
                                     type="text"
                                     placeholder="https://www.instagram.com/username/"
                                     defaultValue={entity && entity[editEntry.attribute] ? entity[editEntry.attribute]["url"] : ""}
-                                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                   />
                                 </div>
                               </div>
                             </div>
 
                             <div className="col-span-6 py-3">
-                              <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                              <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Instagram Profile Photo
                               </label>
                               <div className="my-2 flex items-center">
-                                <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-300">
+                                <span className="h-12 w-12 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-600">
                                   {
                                     uploadPhotoMap[editEntry.attribute + "_profile_photo_url"] ? (
-                                      <img className="object-cover aspect-square" src={uploadPhotoMap[editEntry.attribute + "_profile_photo_url"]} alt="" />
+                                      <img src={uploadPhotoMap[editEntry.attribute + "_profile_photo_url"]} alt="" className="object-cover aspect-square" />
                                     ) : (entity && entity[editEntry.attribute] && entity[editEntry.attribute]["profile_photo_url"]) ?
                                       (
-                                        <img className="object-cover aspect-square" src={entity[editEntry.attribute]["profile_photo_url"]} alt="" />
+                                        <img src={entity[editEntry.attribute]["profile_photo_url"]} alt="" className="object-cover aspect-square" />
                                       ) : (
                                         <></>
                                       )
@@ -1311,7 +1312,7 @@ export function EditForm(props: EditFormProps) {
                                 <button
                                   type="button"
                                   onClick={() => shadowFileInput.current[index].click()}
-                                  className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                  className="ml-5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-3 text-sm font-medium leading-4 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
                                   Change
                                 </button>
@@ -1392,24 +1393,24 @@ export function EditForm(props: EditFormProps) {
                     return (
                       <div className="col-span-6 sm:col-span-3" key={editEntry.attribute}>
                         {/* We show the label tag */}
-                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700">
+                        <label htmlFor={editEntry.attribute} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                           {editEntry.attributeName}
                           {editEntry.isRequired && <span className="text-red-500">*</span>}
                           {editEntry.subName && (
-                            <span className="block text-xs text-gray-500">{editEntry.subName}</span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">{editEntry.subName}</span>
                           )}
                         </label>
 
                         {/* We show the pills and the input to add new pills */}
                         <div className="mt-2">
-                          <div className="flex flex-wrap items-center w-full rounded-md border border-gray-300 px-2 py-1 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+                          <div className="flex flex-wrap items-center w-full rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500 dark:bg-gray-800">
                             {entity && entity[editEntry.attribute] && entity[editEntry.attribute].map((pill: string, index: number) => (
-                              <div key={index} className="flex items-center rounded-md border border-gray-300 bg-white px-3 py-1 m-1 text-sm">
-                                <span className="text-blue-600 font-gram">{pill}</span>
+                              <div key={index} className="flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-1 m-1 text-sm">
+                                <span className="text-blue-600 dark:text-blue-400 font-gram font-semibold">{pill}</span>
                                 <button type="button" onClick={() => removePill(index)}
-                                  className="ml-2 text-gray-500 hover:text-gray-700 focus:outline-none text-md font-gram font-bold bg-transparent p-0 border-0"
+                                  className="ml-1 text-blue-600 dark:text-blue-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none text-md font-gram font-bold bg-transparent p-0 border-0"
                                 >
-                                  X
+                                  ×
                                 </button>
                               </div>
                             ))}
@@ -1422,13 +1423,13 @@ export function EditForm(props: EditFormProps) {
                                   addPill();
                                 }
                               }}
-                              className="flex-grow border-0 focus:ring-0 min-w-[150px] py-1 text-sm"
+                              className="flex-grow border-0 focus:ring-0 min-w-[150px] py-1 text-sm text-gray-900 dark:text-gray-100 bg-transparent dark:bg-transparent placeholder-gray-500 dark:placeholder-gray-400"
                               placeholder="Type and press Enter to add a new pill"
                             />
                           </div>
                           <button type="button"
                             onClick={addPill}
-                            className="mt-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="mt-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 dark:bg-indigo-700 px-3 py-2 text-sm font-medium text-white dark:text-white shadow-sm hover:bg-indigo-700 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             Add
                           </button>
@@ -1446,7 +1447,7 @@ export function EditForm(props: EditFormProps) {
           <div className="flex justify-end">
             <button
               type="button"
-              className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 px-4 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               onClick={() => {
                 navigate(-1);
               }}
@@ -1455,7 +1456,7 @@ export function EditForm(props: EditFormProps) {
             </button>
             <button
               type="submit"
-              className="ml-3 inline-flex rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="ml-3 inline-flex rounded-md border border-transparent bg-indigo-600 dark:bg-indigo-700 py-2 px-4 text-sm font-medium text-white dark:text-white shadow-sm hover:bg-indigo-700 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               {props.buttonText ? props.buttonText : "Save"}
             </button>
