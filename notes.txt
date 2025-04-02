@@ -1,0 +1,8 @@
+REQUIREMENTS:
+
+- Remove the import errors
+- Add a pill List component that:
+    1. Allow users to type text and add it as a pill
+    2. Include a remove button on each pill
+    3. Store the pills as an array in our form data
+    4. Match the specific design shown in the reference image
